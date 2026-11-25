@@ -1,0 +1,817 @@
+{
+ "mode": "live-groq",
+ "started": "2026-11-23T11:46:27.442748+00:00",
+ "clock": "backend",
+ "cases": [
+  {
+   "case_id": "D09",
+   "status": "PASS",
+   "timestamp": "2026-11-23T11:46:54.307547+00:00",
+   "steps": [
+    {
+     "action": "Quy tắc 50/30/20 là gì?",
+     "http": 200,
+     "trace_id": "be5c678298764470a058123659834753",
+     "response": {
+      "status": "COMPLETED",
+      "thread_id": "68f9e35b-608d-4762-b411-b9bc9c1f8460",
+      "conversation_id": "e14ac80b-e377-4a0a-9496-ab248c1ab44c",
+      "message": "Quy tắc 50/30/20 đề xuất chia thu nhập thành 50 % cho nhu cầu thiết yếu, 30 % cho mong muốn và 20 % cho tiết kiệm. [1]",
+      "pending_action": null,
+      "structured_data": null,
+      "financial_data": null,
+      "sources": [
+       {
+        "document_id": "615601db-fecf-4bd0-bcc0-f10ef56cf15a",
+        "title": "phan-bo.md",
+        "source": "phan-bo.md",
+        "document_title": "phan-bo.md",
+        "source_name": "phan-bo.md",
+        "source_url": null,
+        "page_number": null,
+        "chunk_id": "615601db-fecf-4bd0-bcc0-f10ef56cf15a:file:1:d5fc8d1556ae",
+        "evidence": "Quy tắc 50/30/20 gợi ý phân bổ 50% thu nhập cho nhu cầu thiết yếu, 30% cho mong muốn và 20% cho tiết kiệm.",
+        "original_filename": "phan-bo.md"
+       }
+      ],
+      "error_code": null,
+      "pending_state": null,
+      "draft_version": null
+     },
+     "events": [
+      {
+       "event": "llm.request",
+       "agent_node": "classify_intent",
+       "status": "OK",
+       "latency_ms": 18209.61,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "structured_output",
+       "token_usage": {
+        "prompt_tokens": 618,
+        "completion_tokens": 116,
+        "total_tokens": 734
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "rag.retrieval",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 75.5,
+       "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+       "document_ids": [
+        "615601db-fecf-4bd0-bcc0-f10ef56cf15a"
+       ],
+       "retrieved_chunk_ids": [
+        "615601db-fecf-4bd0-bcc0-f10ef56cf15a:file:1:d5fc8d1556ae"
+       ],
+       "similarity_scores": [
+        0.6151
+       ]
+      },
+      {
+       "event": "llm.request",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 1983.06,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "structured_output",
+       "token_usage": {
+        "prompt_tokens": 666,
+        "completion_tokens": 611,
+        "total_tokens": 1277
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "rag.generation",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 1984.75,
+       "model_name": "openai/gpt-oss-120b",
+       "provider": "groq"
+      },
+      {
+       "event": "agent.run",
+       "intent": "FINANCIAL_ADVICE",
+       "status": "COMPLETED",
+       "latency_ms": 20306.88,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "start"
+      },
+      {
+       "event": "http.request",
+       "status": "200",
+       "latency_ms": 20361.19,
+       "operation": "POST"
+      }
+     ],
+     "nodes": [
+      "input_guardrail",
+      "interpret_dialogue",
+      "classify_intent",
+      "retrieve_rag",
+      "output_guardrail"
+     ],
+     "sql_counts": {
+      "transactions": 5,
+      "budgets": 1
+     }
+    }
+   ],
+   "backend_date": "2026-11-23",
+   "sql_before": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   },
+   "sql_after": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "R07",
+   "status": "PASS",
+   "timestamp": "2026-11-23T11:47:14.814120+00:00",
+   "steps": [
+    {
+     "action": "Với chi tiêu tháng này, tôi nên quản lý thế nào?",
+     "http": 200,
+     "trace_id": "66e71bf0698c4129b9c09cb9ba8caee9",
+     "response": {
+      "status": "COMPLETED",
+      "thread_id": "6ec53060-cedc-483f-a3bd-36b5e9f4f54c",
+      "conversation_id": "02ca49ec-1bcc-4079-8401-0c838e2038b8",
+      "message": "Chi tiêu từ sổ giao dịch của bạn\nMua sắm · 90.000 ₫\nĂn uống · 50.000 ₫\nĐi lại · 30.000 ₫\nTrong kết quả này, Mua sắm đứng đầu với 90.000 ₫.\n\nGợi ý từ tài liệu\n• Áp dụng quy tắc 50/30/20: 50% thu nhập cho nhu cầu thiết yếu, 30% cho mong muốn và 20% cho tiết kiệm; ưu tiên xem nhóm chi lớn nhất và giảm khoản linh hoạt để tăng tiền tiết kiệm. [1]\n• Đối với chi không đều, tính tổng chi trong năm rồi chia đều ra mỗi tháng để có khoản để dành. [2]",
+      "pending_action": null,
+      "structured_data": null,
+      "financial_data": [
+       {
+        "category_id": 6,
+        "category_name": "Mua sắm",
+        "total_expense": 90000
+       },
+       {
+        "category_id": 3,
+        "category_name": "Ăn uống",
+        "total_expense": 50000
+       },
+       {
+        "category_id": 4,
+        "category_name": "Đi lại",
+        "total_expense": 30000
+       }
+      ],
+      "sources": [
+       {
+        "document_id": "615601db-fecf-4bd0-bcc0-f10ef56cf15a",
+        "title": "phan-bo.md",
+        "source": "phan-bo.md",
+        "document_title": "phan-bo.md",
+        "source_name": "phan-bo.md",
+        "source_url": null,
+        "page_number": null,
+        "chunk_id": "615601db-fecf-4bd0-bcc0-f10ef56cf15a:file:1:d5fc8d1556ae",
+        "evidence": "Quy tắc 50/30/20 gợi ý phân bổ 50% thu nhập cho nhu cầu thiết yếu, 30% cho mong muốn và 20% cho tiết kiệm. Để quản lý chi tiêu, hãy xem nhóm chi lớn nhất trước, rồi chọn một khoản linh hoạt có thể giảm để dành tiền tiết kiệm.",
+        "original_filename": "phan-bo.md"
+       },
+       {
+        "document_id": "5d276ab6-6a52-4575-85e3-90c641761ee1",
+        "title": "chi-khong-deu.md",
+        "source": "chi-khong-deu.md",
+        "document_title": "chi-khong-deu.md",
+        "source_name": "chi-khong-deu.md",
+        "source_url": null,
+        "page_number": null,
+        "chunk_id": "5d276ab6-6a52-4575-85e3-90c641761ee1:file:1:86391a8efc3a",
+        "evidence": "Với các khoản chi không đều, hãy ước tính tổng chi cả năm và chia thành khoản để dành hàng tháng.",
+        "original_filename": "chi-khong-deu.md"
+       }
+      ],
+      "error_code": null,
+      "pending_state": null,
+      "draft_version": null
+     },
+     "events": [
+      {
+       "event": "llm.request",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "agent_node": "execute_financial_tool",
+       "status": "OK",
+       "latency_ms": 1079.17,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "function_call",
+       "token_usage": {
+        "prompt_tokens": 490,
+        "completion_tokens": 194,
+        "total_tokens": 684
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "financial.tool",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "agent_node": "execute_financial_tool",
+       "tool_name": "get_spending_by_category",
+       "status": "OK",
+       "latency_ms": 9.67,
+       "operation": "model"
+      },
+      {
+       "event": "rag.retrieval",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 140.03,
+       "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+       "document_ids": [
+        "5d276ab6-6a52-4575-85e3-90c641761ee1",
+        "615601db-fecf-4bd0-bcc0-f10ef56cf15a"
+       ],
+       "retrieved_chunk_ids": [
+        "615601db-fecf-4bd0-bcc0-f10ef56cf15a:file:1:d5fc8d1556ae",
+        "5d276ab6-6a52-4575-85e3-90c641761ee1:file:1:86391a8efc3a"
+       ],
+       "similarity_scores": [
+        0.6939,
+        0.6103
+       ]
+      },
+      {
+       "event": "llm.request",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 3510.27,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "structured_output",
+       "token_usage": {
+        "prompt_tokens": 777,
+        "completion_tokens": 1100,
+        "total_tokens": 1877
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "rag.generation",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 3511.5,
+       "model_name": "openai/gpt-oss-120b",
+       "provider": "groq"
+      },
+      {
+       "event": "agent.run",
+       "intent": "PERSONAL_FINANCIAL_ADVICE",
+       "status": "COMPLETED",
+       "latency_ms": 4785.28,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "start"
+      },
+      {
+       "event": "http.request",
+       "status": "200",
+       "latency_ms": 4847.52,
+       "operation": "POST"
+      }
+     ],
+     "nodes": [
+      "input_guardrail",
+      "interpret_dialogue",
+      "classify_intent",
+      "execute_financial_tool",
+      "retrieve_rag",
+      "output_guardrail"
+     ],
+     "sql_counts": {
+      "transactions": 5,
+      "budgets": 1
+     }
+    }
+   ],
+   "backend_date": "2026-11-23",
+   "sql_before": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   },
+   "sql_after": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "D10",
+   "status": "PASS",
+   "timestamp": "2026-11-23T11:47:19.818122+00:00",
+   "steps": [
+    {
+     "action": "Quỹ dự phòng dùng để làm gì và bắt đầu ra sao?",
+     "http": 200,
+     "trace_id": "bd46970aa81d4178a6d6bf768a8bf78a",
+     "response": {
+      "status": "COMPLETED",
+      "thread_id": "1530a225-7662-4944-9617-87d463c69c10",
+      "conversation_id": "b2eee7ab-e69c-4818-a263-4ed3661e1fc0",
+      "message": "Quỹ dự phòng dùng cho các biến cố bất ngờ như mất thu nhập hoặc khám bệnh; để khởi đầu, nên dành một khoản nhỏ định kỳ và giữ ở nơi dễ rút. [1]",
+      "pending_action": null,
+      "structured_data": null,
+      "financial_data": null,
+      "sources": [
+       {
+        "document_id": "1d692a7d-5f98-462b-9d05-02dcaed3bc73",
+        "title": "du-phong.md",
+        "source": "du-phong.md",
+        "document_title": "du-phong.md",
+        "source_name": "du-phong.md",
+        "source_url": null,
+        "page_number": null,
+        "chunk_id": "1d692a7d-5f98-462b-9d05-02dcaed3bc73:file:1:87d12ed3afb0",
+        "evidence": "Quỹ dự phòng dùng cho biến cố bất ngờ như mất thu nhập hoặc khám bệnh. Để bắt đầu, hãy dành riêng một khoản nhỏ đều đặn ở nơi dễ rút khi cần.",
+        "original_filename": "du-phong.md"
+       }
+      ],
+      "error_code": null,
+      "pending_state": null,
+      "draft_version": null
+     },
+     "events": [
+      {
+       "event": "llm.request",
+       "agent_node": "classify_intent",
+       "status": "OK",
+       "latency_ms": 776.32,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "structured_output",
+       "token_usage": {
+        "prompt_tokens": 619,
+        "completion_tokens": 103,
+        "total_tokens": 722
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "rag.retrieval",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 98.56,
+       "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+       "document_ids": [
+        "1d692a7d-5f98-462b-9d05-02dcaed3bc73"
+       ],
+       "retrieved_chunk_ids": [
+        "1d692a7d-5f98-462b-9d05-02dcaed3bc73:file:1:87d12ed3afb0"
+       ],
+       "similarity_scores": [
+        0.6731
+       ]
+      },
+      {
+       "event": "llm.request",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 1215.78,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "structured_output",
+       "token_usage": {
+        "prompt_tokens": 631,
+        "completion_tokens": 315,
+        "total_tokens": 946
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "http_status": 200,
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "rag.generation",
+       "intent": "FINANCIAL_ADVICE",
+       "agent_node": "retrieve_rag",
+       "status": "OK",
+       "latency_ms": 1216.9,
+       "model_name": "openai/gpt-oss-120b",
+       "provider": "groq"
+      },
+      {
+       "event": "agent.run",
+       "intent": "FINANCIAL_ADVICE",
+       "status": "COMPLETED",
+       "latency_ms": 2119.22,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "start"
+      },
+      {
+       "event": "http.request",
+       "status": "200",
+       "latency_ms": 2174.62,
+       "operation": "POST"
+      }
+     ],
+     "nodes": [
+      "input_guardrail",
+      "interpret_dialogue",
+      "classify_intent",
+      "retrieve_rag",
+      "output_guardrail"
+     ],
+     "sql_counts": {
+      "transactions": 5,
+      "budgets": 1
+     }
+    }
+   ],
+   "backend_date": "2026-11-23",
+   "sql_before": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   },
+   "sql_after": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   }
+  }
+ ],
+ "health": {
+  "status": "ok"
+ },
+ "documents": [
+  {
+   "document_id": "615601db-fecf-4bd0-bcc0-f10ef56cf15a",
+   "original_filename": "phan-bo.md",
+   "stored_relative_path": "615601db-fecf-4bd0-bcc0-f10ef56cf15a/file-phan-bo.md",
+   "file_type": "md",
+   "file_size": 335,
+   "uploaded_at": "2026-11-23T11:46:28.159127Z",
+   "indexing_status": "ready",
+   "chunk_count": 1,
+   "error_code": null,
+   "error_message": null
+  },
+  {
+   "document_id": "1d692a7d-5f98-462b-9d05-02dcaed3bc73",
+   "original_filename": "du-phong.md",
+   "stored_relative_path": "1d692a7d-5f98-462b-9d05-02dcaed3bc73/file-du-phong.md",
+   "file_type": "md",
+   "file_size": 216,
+   "uploaded_at": "2026-11-23T11:46:53.110486Z",
+   "indexing_status": "ready",
+   "chunk_count": 1,
+   "error_code": null,
+   "error_message": null
+  },
+  {
+   "document_id": "5d276ab6-6a52-4575-85e3-90c641761ee1",
+   "original_filename": "chi-khong-deu.md",
+   "stored_relative_path": "5d276ab6-6a52-4575-85e3-90c641761ee1/file-chi-khong-deu.md",
+   "file_type": "md",
+   "file_size": 184,
+   "uploaded_at": "2026-11-23T11:46:53.344082Z",
+   "indexing_status": "ready",
+   "chunk_count": 1,
+   "error_code": null,
+   "error_message": null
+  }
+ ],
+ "provider": "groq",
+ "requested_model": "openai/gpt-oss-120b",
+ "reasoning_effort": "medium",
+ "embedding": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "provider_attempts": 6,
+ "provider_responses": [
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  }
+ ],
+ "counts": {
+  "PASS": 3
+ }
+}

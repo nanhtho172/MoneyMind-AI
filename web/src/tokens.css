@@ -1,0 +1,69 @@
+/* Shared React theme. Tailwind utilities and SVG fills resolve the same variables. */
+@theme static {
+  --color-background: #f5f7f4;
+  --color-surface: #ffffff;
+  --color-foreground: #172e2b;
+  --color-secondary-text: #475c55;
+  --color-primary: #087a69;
+  --color-primary-hover: #066757;
+  --color-primary-foreground: #ffffff;
+  --color-muted: #e8f2e5;
+  --color-muted-strong: #d8e9df;
+  --color-border: #d6e1dc;
+  --color-success: #086855;
+  --color-success-surface: #eaf4ed;
+  --color-expense: #984d43;
+  --color-expense-surface: #fcf0ec;
+  --color-info: #3e5c76;
+  --color-info-surface: #eff4f7;
+  --color-gold: #b58b42;
+  --shadow-panel: 0 2px 5px rgb(23 46 43 / 4%);
+  --color-warning: #855332;
+  --color-warning-surface: #f8f0e9;
+  --color-danger: #953e30;
+  --color-danger-surface: #faece9;
+  --color-overlay: rgb(23 46 43 / 32%);
+  --color-forest: #1d4540;
+  --color-lime: #b5ed91;
+  --color-coral: #cb7768;
+  --color-paper: #f7faef;
+  --color-engraving: #86bfa9;
+  --color-chart-1: var(--color-primary);
+  --color-chart-2: #319582;
+  --color-chart-3: #5caa99;
+  --color-chart-4: #80bcad;
+  --font-sans: "Inter Variable", Inter, system-ui, sans-serif;
+  --text-caption: .8125rem;
+  --text-body-sm: .96875rem;
+  --text-body: 1rem;
+  --text-section: clamp(1.25rem, 1.45vw, 1.5rem);
+  --text-title: clamp(1.875rem, 2.65vw, 2.5rem);
+  --text-metric: clamp(2rem, 2.75vw, 2.75rem);
+  --spacing: .25rem;
+  --radius-control: .6875rem;
+  --radius-card: 1.125rem;
+  --radius-badge: 2rem;
+  --shadow-card: none;
+  --shadow-dialog: 0 12px 40px rgb(23 46 43 / 14%);
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+}
+
+:root {
+  --border-line: 1px solid var(--color-border);
+  --focus-ring: 2px solid var(--color-primary);
+  --focus-offset: 3px;
+  --control-height: 3rem;
+  --sidebar-width: clamp(15.5rem, 17.5vw, 17rem);
+  --drawer-width: 17.5rem;
+  --reading-width: 56rem;
+  --page-gutter: clamp(1rem, 2.15vw, 2rem);
+  --chart-row-height: 2.625rem;
+  --motion-duration: 140ms;
+  --motion-ease: ease-out;
+  --disabled-opacity: .6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-duration: 0ms; }
+}

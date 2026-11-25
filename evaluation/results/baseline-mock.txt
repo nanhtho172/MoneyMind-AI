@@ -1,0 +1,17 @@
+MOCK_EVAL PASS intent.general_conversation
+MOCK_EVAL PASS intent.transaction_route
+MOCK_EVAL PASS extraction.amount_date_category
+MOCK_EVAL PASS hitl.pending_has_no_write
+MOCK_EVAL PASS hitl.confirm_and_replay
+MOCK_EVAL PASS extraction.missing_date
+MOCK_EVAL PASS guardrails.multiple_writes
+MOCK_EVAL PASS tools.summary_read
+MOCK_EVAL PASS finance.scoped_totals
+MOCK_EVAL PASS guardrails.tool_arguments
+MOCK_EVAL PASS guardrails.thread_ownership
+MOCK_EVAL PASS hitl.cancel_budget
+MOCK_EVAL PASS rag.retrieved_source
+MOCK_EVAL PASS rag.reject_fabricated_source
+MOCK_EVAL: 14 PASS / 0 FAIL / 0 NOT_EVALUATED
+LIVE_LLM_EVAL: NOT_EVALUATED (enable --live-llm)
+LIVE_RAG_EVAL: NOT_EVALUATED (enable --live-rag)

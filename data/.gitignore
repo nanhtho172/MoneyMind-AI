@@ -1,0 +1,4 @@
+*.db*
+*.sqlite*
+chroma/
+knowledge/uploads/

@@ -1,0 +1,229 @@
+{
+ "mode": "live-groq",
+ "started": "2026-11-23T11:37:17.592636+00:00",
+ "clock": "backend",
+ "cases": [
+  {
+   "case_id": "Q01",
+   "status": "PASS",
+   "timestamp": "2026-11-23T11:37:20.909673+00:00",
+   "steps": [
+    {
+     "action": "Tôi đã chi những khoản gì hôm nay?",
+     "http": 200,
+     "trace_id": "179553e16a4544b294b84419aee95fbb",
+     "response": {
+      "status": "COMPLETED",
+      "thread_id": "d6044ec9-e175-44ab-b6b4-37388ef568c7",
+      "conversation_id": "8200e2a8-07ff-4821-9a58-7829c3e29a28",
+      "message": "Tìm thấy 0 giao dịch. Đang hiển thị 0 giao dịch ở trang 1.",
+      "pending_action": null,
+      "structured_data": null,
+      "financial_data": {
+       "items": [],
+       "total": 0,
+       "page": 1,
+       "page_size": 10
+      },
+      "sources": [],
+      "error_code": null,
+      "pending_state": null,
+      "draft_version": null
+     },
+     "events": [
+      {
+       "event": "llm.request",
+       "agent_node": "classify_intent",
+       "status": "OK",
+       "latency_ms": 1377.27,
+       "model_name": "openai/gpt-oss-120b",
+       "token_usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 79,
+        "total_tokens": 667
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "llm.request",
+       "intent": "QUERY_STATISTICS",
+       "agent_node": "execute_financial_tool",
+       "status": "OK",
+       "latency_ms": 868.37,
+       "model_name": "openai/gpt-oss-120b",
+       "token_usage": {
+        "prompt_tokens": 695,
+        "completion_tokens": 198,
+        "total_tokens": 893
+       },
+       "provider": "groq",
+       "requested_model": "openai/gpt-oss-120b",
+       "response_model": "openai/gpt-oss-120b"
+      },
+      {
+       "event": "financial.tool",
+       "intent": "QUERY_STATISTICS",
+       "agent_node": "execute_financial_tool",
+       "tool_name": "list_transactions",
+       "status": "OK",
+       "latency_ms": 8.32
+      },
+      {
+       "event": "agent.run",
+       "intent": "QUERY_STATISTICS",
+       "status": "COMPLETED",
+       "latency_ms": 2369.79,
+       "model_name": "openai/gpt-oss-120b",
+       "operation": "start"
+      },
+      {
+       "event": "http.request",
+       "status": "200",
+       "latency_ms": 2682.84,
+       "operation": "POST"
+      }
+     ],
+     "nodes": [
+      "input_guardrail",
+      "interpret_dialogue",
+      "classify_intent",
+      "execute_financial_tool",
+      "output_guardrail"
+     ],
+     "sql_counts": {
+      "transactions": 5,
+      "budgets": 1
+     }
+    }
+   ],
+   "sql_before": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   },
+   "sql_after": {
+    "transactions": [
+     {
+      "owner": "demo_a",
+      "id": 1,
+      "date": "2026-11-20",
+      "type": "INCOME",
+      "amount": 12000000,
+      "category": "Lương"
+     },
+     {
+      "owner": "demo_a",
+      "id": 2,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 50000,
+      "category": "Ăn uống"
+     },
+     {
+      "owner": "demo_a",
+      "id": 3,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 30000,
+      "category": "Đi lại"
+     },
+     {
+      "owner": "demo_a",
+      "id": 4,
+      "date": "2026-11-22",
+      "type": "EXPENSE",
+      "amount": 90000,
+      "category": "Mua sắm"
+     },
+     {
+      "owner": "demo_b",
+      "id": 5,
+      "date": "2026-11-21",
+      "type": "EXPENSE",
+      "amount": 777777,
+      "category": "Đi lại"
+     }
+    ],
+    "budgets": [
+     {
+      "owner": "demo_a",
+      "category": "Ăn uống",
+      "year": 2026,
+      "month": 11,
+      "amount": 200000
+     }
+    ]
+   }
+  }
+ ],
+ "health": {
+  "status": "ok"
+ },
+ "documents": [],
+ "provider": "groq",
+ "requested_model": "openai/gpt-oss-120b",
+ "reasoning_effort": "medium",
+ "embedding": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "provider_attempts": 2,
+ "provider_responses": [
+  {
+   "http_status": 200
+  },
+  {
+   "http_status": 200
+  }
+ ],
+ "counts": {
+  "PASS": 1
+ }
+}

@@ -1,0 +1,23 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+
+# Local tooling and generated output
+/.agents/
+/skills-lock.json
+/.idea/
+/.vscode/
+/logs/
+/tmp/
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db

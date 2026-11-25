@@ -1,0 +1,2 @@
+{"dataset": "C:\\MoneyMindAI\\evaluation\\datasets\\rag_eval_draft.jsonl", "split": "test", "unapproved": 30, "routing_cases": 0}
+{"status": "NOT_EVALUATED", "reason": "NO_APPROVED_LABELS"}
